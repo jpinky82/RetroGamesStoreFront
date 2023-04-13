@@ -1,0 +1,36 @@
+﻿@model RetroGames.DATA.EF.Models.Genre
+
+@{
+    ViewData["Title"] = "Delete " + Model.GenreName;
+}
+
+<h1 class="mt-5">@ViewData["Title"]</h1>
+
+<h3>Are you sure you want to delete the @Model.GenreName Genre?</h3>
+<p class="bg-warning text-danger d-inline-block p-3 my-3">
+    This action <em>cannot</em> be undone.
+</p>
+<div>
+    <h4>Genre</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GenreName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GenreName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GenreDescription)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GenreDescription)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="GenreId" />
+        <input type="submit" value="Delete Forever" class="btn btn-danger d-inline-flex" />
+        <a asp-action="Index" class="btn btn-secondary d-inline-flex">Back to List</a>
+    </form>
+</div>

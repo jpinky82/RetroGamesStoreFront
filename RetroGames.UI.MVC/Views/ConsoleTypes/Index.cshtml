@@ -1,0 +1,36 @@
+﻿@model IEnumerable<RetroGames.DATA.EF.Models.ConsoleType>
+
+@{
+    ViewData["Title"] = "Console Types";
+}
+
+
+<h1 class="mt-5">@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary btn-lg">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ConsoleName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConsoleName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ConsoleTypeId">Edit</a> |
+                @*<a asp-action="Details" asp-route-id="@item.ConsoleTypeId">Details</a> |*@
+                <a asp-action="Delete" asp-route-id="@item.ConsoleTypeId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
