@@ -1,0 +1,54 @@
+﻿@model RetroGames.DATA.EF.Models.Manufacturer
+
+@{
+    ViewData["Title"] = Model.ManufacturerName + " Details";
+}
+
+<h1 class="mt-5">@ViewData["Title"]</h1>
+
+<div>
+    <h4>Manufacturer</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ManufacturerName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ManufacturerName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ManAddress)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ManAddress)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ManCity)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ManCity)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ManState)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ManState)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ManZip)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ManZip)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ManPhone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ManPhone)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.ManufacturerId" class="btn btn-primary d-inline-flex">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary d-inline-flex">Back to List</a>
+</div>

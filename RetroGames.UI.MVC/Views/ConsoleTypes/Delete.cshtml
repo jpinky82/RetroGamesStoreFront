@@ -1,0 +1,30 @@
+﻿@model RetroGames.DATA.EF.Models.ConsoleType
+
+@{
+    ViewData["Title"] = "Delete " + Model.ConsoleName;
+}
+
+<h1 class="mt-5">@ViewData["Title"]</h1>
+
+<h3>Are you sure you want to delete @Model.ConsoleName?</h3>
+<p class="bg-warning text-danger d-inline-block p-3 my-3">
+    This action <em>cannot</em> be undone.
+</p>
+<div>
+    <h4>ConsoleType</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ConsoleName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ConsoleName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ConsoleTypeId" />
+        <input type="submit" value="Delete Forever" class="btn btn-danger d-inline-flex" />
+        <a asp-action="Index" class="btn btn-secondary d-inline-flex">Back to List</a>
+    </form>
+</div>

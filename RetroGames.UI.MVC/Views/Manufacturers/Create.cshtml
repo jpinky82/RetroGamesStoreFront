@@ -1,0 +1,55 @@
+﻿@model RetroGames.DATA.EF.Models.Manufacturer
+
+@{
+    ViewData["Title"] = "Create a New Manufacturer";
+}
+
+<h1 class="mt-5">@ViewData["Title"]</h1>
+
+@*<h4>Manufacturer</h4>*@
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ManufacturerName" class="control-label"></label>
+                <input asp-for="ManufacturerName" class="form-control" />
+                <span asp-validation-for="ManufacturerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ManAddress" class="control-label"></label>
+                <input asp-for="ManAddress" class="form-control" />
+                <span asp-validation-for="ManAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ManCity" class="control-label"></label>
+                <input asp-for="ManCity" class="form-control" />
+                <span asp-validation-for="ManCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ManState" class="control-label"></label>
+                <input asp-for="ManState" class="form-control" />
+                <span asp-validation-for="ManState" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ManZip" class="control-label"></label>
+                <input asp-for="ManZip" class="form-control" />
+                <span asp-validation-for="ManZip" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ManPhone" class="control-label"></label>
+                <input asp-for="ManPhone" class="form-control" />
+                <span asp-validation-for="ManPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary d-inline-flex" />
+                <a asp-action="Index" class="btn btn-secondary d-inline-flex">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
