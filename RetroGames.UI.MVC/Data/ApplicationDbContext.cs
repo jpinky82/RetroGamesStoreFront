@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using RetroGames.DATA.EF.Models;
 
 namespace RetroGames.UI.MVC.Data
 {
@@ -9,5 +10,6 @@ namespace RetroGames.UI.MVC.Data
             : base(options)
         {
         }
+        public DbSet<RetroGames.DATA.EF.Models.Product>? Product { get; set; }
     }
 }

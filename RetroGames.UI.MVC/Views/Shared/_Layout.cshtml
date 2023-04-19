@@ -1,226 +1,214 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Retro Games</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Retro Games</title>
 
-	<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,700;0,800;1,200;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,700;0,800;1,200;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 
-	<link rel="stylesheet" href="~/css/animate.css">
+    <link rel="stylesheet" href="~/css/animate.css">
 
-	<link rel="stylesheet" href="~/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="~/css/owl.theme.default.min.css">
-	<link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
 
-	<link rel="stylesheet" href="~/css/flaticon.css">
-	<link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <link rel="stylesheet" href="~/css/style.css">
 </head>
 <body>
 
-	<div class="wrap">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 d-flex align-items-center">
-					<p class="mb-0 phone pl-md-2">
-						<a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span> +00 1234 567</a>
-						<a href="#"><span class="fa fa-paper-plane mr-1"></span> youremail@email.com</a>
-					</p>
-				</div>
-				<div class="col-md-6 d-flex justify-content-md-end">
-					<div class="social-media mr-4">
-						<p class="mb-0 d-flex">
-							<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-							<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-							<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-							<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
-						</p>
-					</div>
-@*					<div class="reg">
-						
-						@*<p class="mb-0"><a href="#" class="mr-2">Sign Up</a> <a href="@Url.Action("ListUsers", "Administration")">Log In</a></p>*@
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 d-flex align-items-center">
+                    <p class="mb-0 phone pl-md-2 topnav">
+                        <a href="@Url.Action("Contact", "Home")" class="mr-2"><span class="fa fa-phone mr-1"></span> (555)123-4567</a>
+                        <a href="@Url.Action("Contact", "Home")"><span class="fa fa-paper-plane mr-1"></span> info@retrogames.com</a>
+                    </p>
+                </div>
+                <div class="col-md-6 d-flex justify-content-md-end">
+                    <p class="mb-0 topnav">@*<a href="#" class="mr-2">Sign Up</a> <a href="@Url.Action("ListUsers", "Administration")">Log In</a>*@
+                        <partial name="_LoginPartial" />
+                    </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-		<div class="container">
-			<a class="navbar-brand" href="/">Liquor <span>store</span></a>
-			<div class="order-lg-last btn-group">
-				<a href="#" class="btn-cart dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<span class="flaticon-shopping-bag"></span>
-					<div class="d-flex justify-content-center align-items-center"><small>3</small></div>
-				</a>
-				<div class="dropdown-menu dropdown-menu-right">
-					<div class="dropdown-item d-flex align-items-start" href="#">
-						<div class="img" style="background-image: url(../images/prod-1.jpg);"></div>
-						<div class="text pl-3">
-							<h4>Bacardi 151</h4>
-							<p class="mb-0"><a href="#" class="price">$25.99</a><span class="quantity ml-3">Quantity: 01</span></p>
-						</div>
-					</div>
-					<div class="dropdown-item d-flex align-items-start" href="#">
-						<div class="img" style="background-image: url(../images/prod-2.jpg);"></div>
-						<div class="text pl-3">
-							<h4>Jim Beam Kentucky Straight</h4>
-							<p class="mb-0"><a href="#" class="price">$30.89</a><span class="quantity ml-3">Quantity: 02</span></p>
-						</div>
-					</div>
-					<div class="dropdown-item d-flex align-items-start" href="#">
-						<div class="img" style="background-image: url(../images/prod-3.jpg);"></div>
-						<div class="text pl-3">
-							<h4>Citadelle</h4>
-							<p class="mb-0"><a href="#" class="price">$22.50</a><span class="quantity ml-3">Quantity: 01</span></p>
-						</div>
-					</div>
-					<a class="dropdown-item text-center btn-link d-block w-100" href="@Url.Action("Cart","Home")">
-						View All
-						<span class="ion-ios-arrow-round-forward"></span>
-					</a>
-				</div>
-			</div>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">Retro Games <span>store</span></a>
+            <div class="order-lg-last btn-group">
+                <a href="#" class="btn-cart dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="flaticon-shopping-bag cart"></span>
+                    <div class="d-flex justify-content-center align-items-center"><small>3</small></div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-item d-flex align-items-start" href="#">
+                        <div class="img" style="background-image: url(../images/prod-1.jpg);"></div>
+                        <div class="text pl-3">
+                            <h4>Bacardi 151</h4>
+                            <p class="mb-0"><a href="#" class="price">$25.99</a><span class="quantity ml-3">Quantity: 01</span></p>
+                        </div>
+                    </div>
+                    <div class="dropdown-item d-flex align-items-start" href="#">
+                        <div class="img" style="background-image: url(../images/prod-2.jpg);"></div>
+                        <div class="text pl-3">
+                            <h4>Jim Beam Kentucky Straight</h4>
+                            <p class="mb-0"><a href="#" class="price">$30.89</a><span class="quantity ml-3">Quantity: 02</span></p>
+                        </div>
+                    </div>
+                    <div class="dropdown-item d-flex align-items-start" href="#">
+                        <div class="img" style="background-image: url(../images/prod-3.jpg);"></div>
+                        <div class="text pl-3">
+                            <h4>Citadelle</h4>
+                            <p class="mb-0"><a href="#" class="price">$22.50</a><span class="quantity ml-3">Quantity: 01</span></p>
+                        </div>
+                    </div>
+                    <a class="dropdown-item text-center btn-link d-block w-100" href="@Url.Action("Cart","Home")">
+                        View All
+                        <span class="ion-ios-arrow-round-forward"></span>
+                    </a>
+                </div>
+            </div>
 
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="oi oi-menu"></span> Menu
-			</button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
 
-			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
-					<li class="nav-item"><a href="@Url.Action("About", "Home")" class="nav-link">About</a></li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
-						<div class="dropdown-menu" aria-labelledby="dropdown04">
-							<a class="dropdown-item" href="@Url.Action("Index","Products")">Products</a>
-							<a class="dropdown-item" href="@Url.Action("SingleProduct", "Home")">Single Product</a>
-							<a class="dropdown-item" href="@Url.Action("Cart", "Home")">Cart</a>
-							<a class="dropdown-item" href="@Url.Action("Checkout", "Home")">Checkout</a>
-						</div>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Admin</span> <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a asp-action="ListUsers" asp-controller="Administration">Users</a></li>
-							<li><a asp-action="ListRoles" asp-controller="Administration">Roles</a></li>
-							<li><a asp-action="Index" asp-controller="Categories">Categories</a></li>
-							<li><a asp-action="Index" asp-controller="ConsoleTypes">Console Types</a></li>
-							<li><a asp-action="Index" asp-controller="Genres">Genres</a></li>
-							<li><a asp-action="Index" asp-controller="Manufacturers">Manufacturers</a></li>
-							<li><a asp-action="Index" asp-controller="Orders">Orders</a></li>
-						</ul>
-					</li>
-					<li class="nav-item"><a href="@Url.Action("Contact", "Home")" class="nav-link">Contact</a></li>
-					<partial name="_LoginPartial" />
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- END nav -->
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="@Url.Action("About", "Home")" class="nav-link">About</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <a class="dropdown-item" href="@Url.Action("Index","Products")">Products</a>
+                            <a class="dropdown-item" href="@Url.Action("Cart", "Home")">Cart</a>
+                            <a class="dropdown-item" href="@Url.Action("Checkout", "Home")">Checkout</a>
+                        </div>
+                    </li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Admin</span> <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a asp-action="ListUsers" class="dropdown-item" asp-controller="Administration">Users</a></li>
+                                <li><a asp-action="ListRoles" class="dropdown-item" asp-controller="Administration">Roles</a></li>
+                                <li><a asp-action="Index" class="dropdown-item" asp-controller="Categories">Categories</a></li>
+                                <li><a asp-action="Index" class="dropdown-item" asp-controller="ConsoleTypes">Console Types</a></li>
+                                <li><a asp-action="Index" class="dropdown-item" asp-controller="Genres">Genres</a></li>
+                                <li><a asp-action="Index" class="dropdown-item" asp-controller="Manufacturers">Manufacturers</a></li>
+                                <li><a asp-action="Index" class="dropdown-item" asp-controller="Orders">Orders</a></li>
+                            </ul>
+                        </li>
+                    }
 
-	@RenderBody()
+                    <li class="nav-item"><a href="@Url.Action("Contact", "Home")" class="nav-link">Contact</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    @RenderBody()
 
-	<footer class="ftco-footer">
-		<div class="container">
-			<div class="row mb-5">
-				<div class="col-sm-12 col-md">
-					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2 logo"><a href="#">Liquor <span>Store</span></a></h2>
-						<p>Far far away, behind the word mountains, far from the countries.</p>
-						<ul class="ftco-footer-social list-unstyled mt-2">
-							<li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-sm-12 col-md">
-					<div class="ftco-footer-widget mb-4 ml-md-4">
-						<h2 class="ftco-heading-2">My Accounts</h2>
-						<ul class="list-unstyled">
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>My Account</a></li>
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Register</a></li>
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Log In</a></li>
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>My Order</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-sm-12 col-md">
-					<div class="ftco-footer-widget mb-4 ml-md-4">
-						<h2 class="ftco-heading-2">Information</h2>
-						<ul class="list-unstyled">
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>About us</a></li>
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Catalog</a></li>
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Contact us</a></li>
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Term &amp; Conditions</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-sm-12 col-md">
-					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Quick Link</h2>
-						<ul class="list-unstyled">
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>New User</a></li>
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Help Center</a></li>
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Report Spam</a></li>
-							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Faq's</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-sm-12 col-md">
-					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Have a Questions?</h2>
-						<div class="block-23 mb-3">
-							<ul>
-								<li><span class="icon fa fa-map marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-								<li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-								<li><a href="#"><span class="icon fa fa-paper-plane pr-4"></span><span class="text">info@yourdomain.com</span></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container-fluid px-0 py-5 bg-black">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
+    <footer class="ftco-footer">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-sm-12 col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2 logo"><a href="/">Retro Games <span>Store</span></a></h2>
+                        <p>Please visit us on Social Media as well!</p>
+                        <ul class="ftco-footer-social list-unstyled mt-2">
+                            <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md">
+                    <div class="ftco-footer-widget mb-4 ml-md-4">
+                        <h2 class="ftco-heading-2">My Accounts</h2>
+                        <ul class="list-unstyled">
+                            <li><a asp-area="Identity" asp-page="/Account/Register"><span class="fa fa-chevron-right mr-2"></span>Register</a>
+                            <li>
+                            <li><a asp-area="Identity" asp-page="/Account/Login"><span class="fa fa-chevron-right mr-2"></span>Login</a></li>
+                            <li><a asp-area="Identity" asp-page="/Account/Manage/Index"><span class="fa fa-chevron-right mr-2"></span>Account</a>
+                            <li>
+                            <li><a href="@Url.Action("Index", "Orders")"><span class="fa fa-chevron-right mr-2"></span>Orders</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md">
+                    <div class="ftco-footer-widget mb-4 ml-md-4">
+                        <h2 class="ftco-heading-2">Information</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="@Url.Action("About", "Home")"><span class="fa fa-chevron-right mr-2"></span>About us</a></li>
+                            <li><a href="@Url.Action("Index", "Products")"><span class="fa fa-chevron-right mr-2"></span>Catalog</a></li>
+                            <li><a href="@Url.Action("Contact", "Home")"><span class="fa fa-chevron-right mr-2"></span>Contact us</a></li>
+                            <li><a href="@Url.Action("Privacy", "Home")"><span class="fa fa-chevron-right mr-2"></span>Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Have a Questions?</h2>
+                        <div class="block-23 mb-3">
+                            <ul>
+                                <li><span class="icon fa fa-map marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+                                <li><span class="icon fa fa-phone"></span><a href="#"><span class="text">(555)123-4567</span></a></li>
+                                <li><span class="icon fa fa-paper-plane pr-4"></span><a href="#"><span class="text">info@retrogames.com</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid px-0 py-5 bg-black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
 
-						<p class="mb-0" style="color: rgba(255,255,255,.5);">
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
+                        <p class="mb-0" style="color: rgba(255,255,255,.5);">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
 
-	<!-- loader -->
-	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
 
 
-	<script src="~/js/jquery.min.js"></script>
-	<script src="~/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="~/js/popper.min.js"></script>
-	<script src="~/js/bootstrap.min.js"></script>
-	<script src="~/js/jquery.easing.1.3.js"></script>
-	<script src="~/js/jquery.waypoints.min.js"></script>
-	<script src="~/js/jquery.stellar.min.js"></script>
-	<script src="~/js/owl.carousel.min.js"></script>
-	<script src="~/js/jquery.magnific-popup.min.js"></script>
-	<script src="~/js/jquery.animateNumber.min.js"></script>
-	<script src="~/js/scrollax.min.js"></script>
-	<script src="~/https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="~/js/google-map.js"></script>
-	<script src="~/js/main.js"></script>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.easing.1.3.js"></script>
+    <script src="~/js/jquery.waypoints.min.js"></script>
+    <script src="~/js/jquery.stellar.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/js/jquery.animateNumber.min.js"></script>
+    <script src="~/js/scrollax.min.js"></script>
+    <script src="~/https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="~/js/google-map.js"></script>
+    <script src="~/js/main.js"></script>
 
-	@RenderSection("Scripts", false)
+    @RenderSection("Scripts", false)
 </body>
 </html>
