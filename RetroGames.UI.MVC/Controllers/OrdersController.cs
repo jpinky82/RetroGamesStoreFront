@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +11,7 @@ using RetroGames.DATA.EF.Models;
 
 namespace RetroGames.UI.MVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class OrdersController : Controller
     {
         private readonly RetroGamesContext _context;
@@ -19,6 +22,7 @@ namespace RetroGames.UI.MVC.Controllers
         }
 
         // GET: Orders
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var retroGamesContext = _context.Orders.Include(o => o.User);
@@ -26,6 +30,7 @@ namespace RetroGames.UI.MVC.Controllers
         }
 
         // GET: Orders/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Orders == null)

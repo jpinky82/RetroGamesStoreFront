@@ -23,10 +23,10 @@ namespace RetroGames.DATA.EF.Models
         public bool IsDiscontinued { get; set; }
         public string? ProductImage { get; set; }
 
-        public virtual Category Category { get; set; } = null!;
+        public virtual Category? Category { get; set; }
         public virtual ConsoleType? ConsoleType { get; set; }
         public virtual Genre? Genre { get; set; }
-        public virtual Manufacturer Manufacturer { get; set; } = null!;
+        public virtual Manufacturer? Manufacturer { get; set; }
         public virtual ICollection<OrderProduct> OrderProducts { get; set; }
     }
 }

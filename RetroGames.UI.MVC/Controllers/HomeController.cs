@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RetroGames.UI.MVC.Models;
+using RetroGames.DATA.EF.Models;
 using System.Diagnostics;
 
 namespace RetroGames.UI.MVC.Controllers
@@ -15,6 +16,9 @@ namespace RetroGames.UI.MVC.Controllers
 
         public IActionResult Index()
         {
+            
+
+
             return View();
         }
 
@@ -50,6 +54,8 @@ namespace RetroGames.UI.MVC.Controllers
         {
             return View();
         }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

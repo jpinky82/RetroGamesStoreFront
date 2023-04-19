@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc;
-
-
+using Microsoft.AspNetCore.Http;
 
 namespace RetroGames.DATA.EF.Models//.Metadata
 {
@@ -32,7 +31,11 @@ namespace RetroGames.DATA.EF.Models//.Metadata
 	public partial class OrderProduct { }
 
 	[ModelMetadataType(type: typeof(ProductMetadata))]
-	public partial class Product { }
+	public partial class Product 
+	{
+        [NotMapped]
+        public IFormFile? ImageFile { get; set; }
+    }
 
 	[ModelMetadataType(type: typeof(UserMetadata))]
 	public partial class User { }

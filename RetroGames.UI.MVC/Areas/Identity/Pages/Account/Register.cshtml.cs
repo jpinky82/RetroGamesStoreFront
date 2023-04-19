@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using RetroGames.DATA.EF.Models;
 
 namespace RetroGames.UI.MVC.Areas.Identity.Pages.Account
 {
@@ -97,7 +98,34 @@ namespace RetroGames.UI.MVC.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
-        }
+
+			[Required]
+			[StringLength(50, ErrorMessage = "Must be 50 characters or less")]
+			[Display(Name = "First Name")]
+			public string FirstName { get; set; } = null!;
+
+			[Required]
+			[StringLength(50, ErrorMessage = "Must be 50 characters or less")]
+			[Display(Name = "Last Name")]
+			public string LastName { get; set; } = null!;
+
+			[StringLength(150, ErrorMessage = "Must be 150 charactes or less")]
+			public string? Address { get; set; }
+
+			[StringLength(50, ErrorMessage = "Must be 50 characters or less")]
+			public string? City { get; set; }
+
+			[StringLength(2, ErrorMessage = "Please use 2 letter Identifier for your State")]
+			public string? State { get; set; }
+
+			[StringLength(5, ErrorMessage = "Must be exactly 5 characters")]
+			[DataType(DataType.PostalCode)]
+			public string? Zip { get; set; }
+
+			[StringLength(24, ErrorMessage = "Must be exactly 24 characters")]
+			[DataType(DataType.PhoneNumber)]
+			public string? Phone { get; set; }
+		}
 
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -123,6 +151,25 @@ namespace RetroGames.UI.MVC.Areas.Identity.Pages.Account
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
+
+                    RetroGamesContext _context = new RetroGamesContext();
+
+                    User userDetail = new User()
+                    {
+                        UserId = userId,
+                        FirstName = Input.FirstName,
+                        LastName = Input.LastName,
+                        Address = Input.Address,
+                        City = Input.City,
+                        State = Input.State,
+                        Zip = Input.Zip,
+                        Phone = Input.Phone
+                    };
+
+                    _context.Users.Add(userDetail);
+                    _context.SaveChanges();
+
+
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(
