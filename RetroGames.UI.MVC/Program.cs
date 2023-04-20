@@ -18,9 +18,15 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddRoles<IdentityRole>()
     .AddRoleManager<RoleManager<IdentityRole>>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
-
-
 builder.Services.AddControllersWithViews();
+
+//Below, we will register the Session service for use with the Shopping Cart
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(20); //The duration a session is stored in memory
+    options.Cookie.HttpOnly = true; //Allows us to set cookie options over unsecured connections
+    options.Cookie.IsEssential = true; //Cannot be declined
+});
 
 var app = builder.Build();
 
@@ -40,6 +46,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseSession();//Implements the Session Service. this MUST come after UseRouting() and BEFORE UseAuthentication()
 
 app.UseAuthentication();
 app.UseAuthorization();
