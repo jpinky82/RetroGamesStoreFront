@@ -21,7 +21,26 @@ namespace RetroGames.UI.MVC.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var sessionCart = HttpContext.Session.GetString("cart");
+
+            Dictionary<int, CartItemViewModel> shoppingCart = null;
+
+            if (sessionCart == null || sessionCart.Count() == 0)
+            {
+                shoppingCart = new Dictionary<int, CartItemViewModel>();
+
+                ViewBag.Message = "There are no items in your cart.";
+            }
+            else
+            {
+                ViewBag.Message = null;
+
+                shoppingCart = JsonConvert.DeserializeObject<Dictionary<int, CartItemViewModel>>(sessionCart);
+            }
+
+
+
+            return View(shoppingCart);
         }
 
         public IActionResult AddToCart(int id)
@@ -30,7 +49,68 @@ namespace RetroGames.UI.MVC.Controllers
 
             var sessionCart = HttpContext.Session.GetString("cart");
 
-            return View();
+            if (string.IsNullOrEmpty(sessionCart))
+            {
+                shoppingCart = new Dictionary<int, CartItemViewModel>();
+            }
+            else
+            {
+                shoppingCart = JsonConvert.DeserializeObject<Dictionary<int, CartItemViewModel>>(sessionCart);
+            }
+
+            Product product = _context.Products.Find(id);
+
+            CartItemViewModel civm = new CartItemViewModel(1, product);
+
+            if (shoppingCart.ContainsKey(product.ProductId))
+            {
+                shoppingCart[product.ProductId].Qty++;
+            }
+            else
+            {
+                shoppingCart.Add(product.ProductId, civm);
+            }
+
+            string jsonCart = JsonConvert.SerializeObject(shoppingCart);
+
+            HttpContext.Session.SetString("cart", jsonCart);
+
+            return RedirectToAction("Index", "Products");
+        }
+
+        public IActionResult RemoveFromCart(int id)
+        {
+            var sessionCart = HttpContext.Session.GetString("cart");
+
+            Dictionary<int, CartItemViewModel> shoppingCart = JsonConvert.DeserializeObject<Dictionary<int, CartItemViewModel>>(sessionCart);
+
+            shoppingCart.Remove(id);
+
+            if(shoppingCart.Count == 0)
+            {
+                HttpContext.Session.Remove("cart");
+            }
+            else
+            {
+                string jsonCart = JsonConvert.SerializeObject(shoppingCart);
+                HttpContext.Session.SetString("cart", jsonCart);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult UpdateCart(int productId, int qty)
+        {
+            var sessionCart = HttpContext.Session.GetString("cart");
+
+            Dictionary<int, CartItemViewModel> shoppingCart = JsonConvert.DeserializeObject<Dictionary<int, CartItemViewModel>>(sessionCart);
+
+            shoppingCart[productId].Qty = qty;
+
+            string jsonCart = JsonConvert.SerializeObject(shoppingCart);
+            HttpContext.Session.SetString("cart", jsonCart);
+
+            return RedirectToAction("Index");
         }
     }
 }

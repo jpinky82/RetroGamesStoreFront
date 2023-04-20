@@ -2,6 +2,7 @@
 using RetroGames.UI.MVC.Models;
 using RetroGames.DATA.EF.Models;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 
 namespace RetroGames.UI.MVC.Controllers
 {
@@ -16,8 +17,6 @@ namespace RetroGames.UI.MVC.Controllers
 
         public IActionResult Index()
         {
-            
-
 
             return View();
         }
