@@ -143,9 +143,10 @@ else
                     </div>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <p class="text-center"><a href="#" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
-
-                        <!-- TODO: Update Submit Order button -->
+                        @*<a href="#" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>*@
+                        <p class="text-center"><a asp-action="SubmitOrder" class="btn button py-3 px-4">
+                            Submit Order
+                        </a></p>
                     }
                     else
                     { 
