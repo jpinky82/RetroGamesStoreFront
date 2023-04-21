@@ -8604,6 +8604,9 @@ h1, h2, h3, h4, h5,
     .secondarybutton:hover {
         background: #2A9AB799;
     }
+.table .tname a{
+    color: black;
+}
 
 .cut-text {
     text-overflow: ellipsis;
@@ -9008,7 +9011,7 @@ h1, h2, h3, h4, h5,
     padding: 30px;
     font-size: 20px;
     font-weight: 500;
-    color: white; }
+    color: black; }
   .table tbody tr {
     margin-bottom: 10px; }
   .table tbody th, .table tbody td {

@@ -34,8 +34,7 @@ namespace RetroGames.DATA.EF.Models//.Metadata
 
 		[Required(ErrorMessage = "Name is required")]
 		[StringLength(50, ErrorMessage = "Console Name cannot exceed 50 Characters")]
-		[Display(Name = "Console Name")]
-		[DisplayFormat(NullDisplayText = "N/A")]
+		[Display(Name = "Console")]
 		public string ConsoleName { get; set; } = null!;
 	}
 
@@ -97,7 +96,7 @@ namespace RetroGames.DATA.EF.Models//.Metadata
 
 		[Required(ErrorMessage = "Date is Required")]
 		[Display(Name = "Date")]
-		[DisplayFormat(DataFormatString ="{0:d}, ApplyFormatInEditMode=true")]
+		[DisplayFormat(DataFormatString ="{0:d}", ApplyFormatInEditMode=true)]
 		public DateTime OrderDate { get; set; }
 
 		[Required(ErrorMessage = "Name is required")]
@@ -105,7 +104,8 @@ namespace RetroGames.DATA.EF.Models//.Metadata
 		[Display(Name = "Name")]
 		public string ShipToName { get; set; } = null!;
 
-		[Required(ErrorMessage = "City is required")]
+        [Display(Name = "City")]
+        [Required(ErrorMessage = "City is required")]
         [StringLength(50, ErrorMessage = "City cannot exceed 50 Characters")]
         public string ShipCity { get; set; } = null!;
 
@@ -171,7 +171,8 @@ namespace RetroGames.DATA.EF.Models//.Metadata
 		[Display(Name = "Discontinued?")]
 		public bool IsDiscontinued { get; set; }
 
-		//public string? ProductImage { get; set; }
+        [Display(Name = "Image")]
+        public string? ProductImage { get; set; }
 	}
 	public class UserMetadata
 	{

@@ -7,98 +7,110 @@
 @*<h1 class="mt-5">@ViewData["Title"]</h1>*@
 
 
-<section class="hero-wrap hero-wrap-2" style="background-image: url('../images/retro_background-1.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2 navbackground" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
             <div class="col-md-9 ftco-animate mb-5 text-center">
                 <p class="breadcrumbs mb-2"><span class="mr-2"><a href="/">Home <i class="fa fa-chevron-right"></i></a></span> <span>Products <i class="fa fa-chevron-right"></i></span></p>
-                <h2 class="mb-0 bread">Products</h2>
+                <h2 class="mb-0 bread oldfont">@ViewData["Title"]</h2>
             </div>
         </div>
     </div>
 </section>
 
-<p class="mt-3">
+<p class="mt-3 ml-2">
     @if (User.IsInRole("Admin"))
     {
-        <a asp-action="Create" class="btn btn-primary btn-lg">Create New</a>
+        <a asp-action="Create" class="btn button btn-lg">Create New</a>
     }
-    <a asp-action="Index" class="btn btn-secondary btn-lg">Tiled View</a>
+    <a asp-action="Index" class="btn secondarybutton btn-lg">Tiled View</a>
 </p>
-<table class="table mt-0">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UnitsInStock)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsDiscontinued)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ConsoleType)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.ProductId">
-                        @Html.DisplayFor(modelItem => item.ProductName)
-                    </a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductPrice)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UnitsInStock)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsDiscontinued)
-                </td>
-                <td>
-                    <img src="~/images/t_@item.ProductImage" class="img-fluid" alt="@item.ProductDescription" />
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ConsoleType.ConsoleName)
-                </td>
-                <td>
+<div class="mx-3 mb-3">
+    <div class="p-3 bg-light">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductPrice)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UnitsInStock)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsDiscontinued)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductImage)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Category)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ConsoleType)
+                    </th>
                     @if (User.IsInRole("Admin"))
                     {
-                        <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a>
-                        <span>|</span>
-                        @if (item.OrderProducts.Count() == 0)
-                        {
-                            <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
-                        }
-                        else
-                        {
-                            <a disabled="disabled" class="text-danger text-decoration-line-through"
-                               title="Cannot delete this Product as it is referenced by an Order.">Delete</a>
-                        }
+                        <th>Modify</th>
                     }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="tname">
+                            <a asp-action="Details" asp-route-id="@item.ProductId">
+                                @Html.DisplayFor(modelItem => item.ProductName)
+                            </a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UnitsInStock)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsDiscontinued)
+                        </td>
+                        <td>
+                            <img src="~/images/t_@item.ProductImage" class="img-fluid" alt="@item.ProductDescription" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ConsoleType.ConsoleName)
+                        </td>
 
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <td>
 
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                                <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn secondarybutton">Edit</a>
+                                <span>|</span>
+                                @if (item.OrderProducts.Count() == 0)
+                                {
+                                    <a asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-danger">Delete</a>
+                                }
+                                else
+                                {
+                                    <a disabled="disabled" class="btn btn-danger text-decoration-line-through"
+                                       title="Cannot delete this Product as it is referenced by an Order.">Delete</a>
+                                }
+
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section scripts {
+    <script>let table = new DataTable('.table');</script>
+}

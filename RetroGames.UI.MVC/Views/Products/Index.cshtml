@@ -19,13 +19,34 @@
     </div>
 </section>
 
-<p class="mt-3 ml-2">
-    @if (User.IsInRole("Admin"))
-    {
-        <a asp-action="Create" class="btn button btn-lg">Create New</a>
-    }
-    <a asp-action="ListProducts" class="btn secondarybutton btn-lg">List View</a>
-</p>
+<div>
+    <p class="col-md-2 mt-3 ml-2">
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-action="Create" class="btn button btn-lg">Create New</a>
+        }
+        <a asp-action="ListProducts" class="btn secondarybutton btn-lg">List View</a>
+    </p>
+
+    <div class="container col-md-6">
+        <form asp-action="Index" method="get"> 
+            <label for="categoryId" class="control-label text-center d-block">Filter by Category</label>
+            <select name="categoryId" class="form-control text-center mb-3" asp-items="ViewBag.CategoryId">
+                <option value="0">[Choose a Category]</option>
+            </select>
+
+            <input type="text" name="searchTerm" class="form-control text-center" placeholder="Search Products" />
+            <input type="submit" value="Go" class="btn btn-primary text-center w-50 d-block" />
+
+        </form>
+        @if (ViewBag.NbrResults != null)
+        {
+            <p class="mt-5 p-2 alert-warning text-center">
+                Showing @ViewBag.NbrResults result@(ViewBag.NbrResults == 1 ? "" : "s") for '@ViewBag.SearchTerm'...
+            </p>
+        }
+    </div>
+</div>
 
 <section class="ftco-section">
     <div class="container">

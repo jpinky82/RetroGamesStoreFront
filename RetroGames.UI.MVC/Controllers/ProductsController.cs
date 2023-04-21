@@ -46,6 +46,56 @@ namespace RetroGames.UI.MVC.Controllers
             
         }
 
+        public async Task<IActionResult> Products(string searchTerm, int categoryId = 0)
+        {
+            //int pageSize = 12;
+
+            var products = _context.Products.Where(p => !p.IsDiscontinued)
+                .Include(p => p.Category)
+                .Include(p => p.Manufacturer)
+                .Include(p => p.OrderProducts).ToList();
+
+            #region Category Filter
+
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName");
+
+            ViewBag.Category = 0;
+
+            if(categoryId != 0)
+            {
+                products = products.Where(p => p.CategoryId == categoryId).ToList();
+
+                //Repopulate the dropdown with the current category selected
+                ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName", categoryId);
+
+                ViewBag.Category = categoryId;
+            }
+            #endregion
+
+            #region Search Filter
+
+            if (!String.IsNullOrEmpty(searchTerm))
+            {
+                products = products.Where(p =>
+                p.ProductName.ToLower().Contains(searchTerm.ToLower()) ||
+                p.Manufacturer.ManufacturerName.ToLower().Contains(searchTerm.ToLower()) ||
+                p.Category.CategoryName.ToLower().Contains(searchTerm.ToLower()) ||
+                p.ProductDescription.ToLower().Contains(searchTerm.ToLower())).ToList();
+
+                ViewBag.NbrResults = products.Count;
+
+                ViewBag.SearchTerm = searchTerm;
+            }
+            else
+            {
+                ViewBag.NbrResults = null;
+                ViewBag.SearchTerm = null;
+            }
+
+            #endregion
+            return View(products);
+        }
+
         // GET: Products/Details/5
         [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
