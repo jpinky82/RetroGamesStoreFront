@@ -1,4 +1,8 @@
-﻿@model IEnumerable<RetroGames.DATA.EF.Models.Product>
+﻿@*@model IEnumerable<RetroGames.DATA.EF.Models.Product>*@
+
+@model IPagedList<RetroGames.DATA.EF.Models.Product>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
 
 @{
     ViewData["Title"] = "Products";
@@ -48,9 +52,9 @@
     </div>
 </div>
 
-<section class="ftco-section">
-    <div class="container">
-        <div class="row">
+<section class="ftco-section p-3">
+    <div class="container p-5 bg-light rounded-top">
+        <div class="row border p-2">
             @foreach (var item in Model)
             {
                 <div class="col-md-3 d-flex">
@@ -78,4 +82,18 @@
                 </div>
             }
         </div>
+
+        <div class="row mt-5 bg-light">
+            <div class="w-50 mx-auto text-center">
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+            </div>
+            <div class="w-100">
+                @Html.PagedListPager(
+                Model,
+                page => Url.Action("Index",
+                new {page, searchTerm = ViewBag.SearchTerm, categoryId = ViewBag.Category})
+                )
+            </div>
+        </div>
+    </div>
 </section>

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Data;
 using RetroGames.UI.MVC.Utilities;
 using System.Drawing;
+using X.PagedList;
 
 namespace RetroGames.UI.MVC.Controllers
 {
@@ -30,7 +31,7 @@ namespace RetroGames.UI.MVC.Controllers
 
         // GET: Products
         [AllowAnonymous]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> OriginalIndex()
         {
             if (User.IsInRole("Admin"))
             {
@@ -46,9 +47,10 @@ namespace RetroGames.UI.MVC.Controllers
             
         }
 
-        public async Task<IActionResult> Products(string searchTerm, int categoryId = 0)
+        [AllowAnonymous]
+        public async Task<IActionResult> Index(string searchTerm, int categoryId = 0, int page = 1)
         {
-            //int pageSize = 12;
+            int pageSize = 12;
 
             var products = _context.Products.Where(p => !p.IsDiscontinued)
                 .Include(p => p.Category)
@@ -93,7 +95,7 @@ namespace RetroGames.UI.MVC.Controllers
             }
 
             #endregion
-            return View(products);
+            return View(products.ToPagedList(page, pageSize));
         }
 
         // GET: Products/Details/5
@@ -359,7 +361,7 @@ namespace RetroGames.UI.MVC.Controllers
         {
             if (User.IsInRole("Admin"))
             {
-                var products = _context.Products.Include(p => p.Category).Include(p => p.Manufacturer).Include(p => p.OrderProducts);
+                var products = _context.Products.Include(p => p.Category).Include(p => p.Manufacturer).Include(p => p.OrderProducts).Include(p => p.ConsoleType);
                 return View(await products.ToListAsync());
             }
             else
@@ -367,7 +369,7 @@ namespace RetroGames.UI.MVC.Controllers
                 //filterting products to those that aren't discontinued.
                 var products = _context.Products.Where(x => x.IsDiscontinued == false && x.UnitsInStock > 0)
                     //allows the Categories and Suppliers to show up
-                    .Include(p => p.Category).Include(p => p.Manufacturer).Include(p => p.OrderProducts);
+                    .Include(p => p.Category).Include(p => p.Manufacturer).Include(p => p.OrderProducts).Include(p => p.ConsoleType);
                 return View(await products.ToListAsync());
             }
         }

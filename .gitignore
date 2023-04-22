@@ -362,3 +362,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /RetroGames.UI.MVC/appsettings.json
+/RetroGames.UI.MVC/_Archive
+
