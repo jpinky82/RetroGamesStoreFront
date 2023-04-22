@@ -63,6 +63,7 @@ body {
   text-align: left;
   background-color: #fff; }
 
+
 [tabindex="-1"]:focus {
   outline: 0 !important; }
 
@@ -324,6 +325,7 @@ h5, .h5 {
 
 h6, .h6 {
   font-size: 1rem; }
+
 
 .lead {
   font-size: 1.25rem;
@@ -9792,10 +9794,14 @@ textarea.form-control {
   height: inherit !important; }
 
 #map {
-  width: 100%; }
-  @media (max-width: 767.98px) {
+    width: 100%;
+}
+
+@media (max-width: 767.98px) {
     #map {
-      height: 300px; } }
+        height: 300px;
+    }
+}
 
 .block-21 .blog-img {
   display: block;
@@ -10058,6 +10064,18 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+.dataTables input {
+    background-color: white;
+}
+
+._wrapper input {
+    background-color: white;
+}
+
+#account a{
+    color: blue;
+}
 
 /*Views styling*/
 

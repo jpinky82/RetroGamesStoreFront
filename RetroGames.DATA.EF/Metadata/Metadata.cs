@@ -30,7 +30,8 @@ namespace RetroGames.DATA.EF.Models//.Metadata
 
 	public class ConsoleTypeMetadata
 	{
-		public int ConsoleTypeId { get; set; }
+        [Display(Name = "Console")]
+        public int ConsoleTypeId { get; set; }
 
 		[Required(ErrorMessage = "Name is required")]
 		[StringLength(50, ErrorMessage = "Console Name cannot exceed 50 Characters")]
@@ -163,7 +164,9 @@ namespace RetroGames.DATA.EF.Models//.Metadata
 		[Display(Name = "Stock")]
 		public short UnitsInStock { get; set; }
 
-		//public int? ConsoleTypeId { get; set; }
+        [StringLength(50, ErrorMessage = "Console Name cannot exceed 50 Characters")]
+        [Display(Name = "Console")]
+        public int? ConsoleTypeId { get; set; }
 		//public int ManufacturerId { get; set; }
 		//public int CategoryId { get; set; }
 		//public int? GenreId { get; set; }

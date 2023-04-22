@@ -120,42 +120,71 @@ namespace RetroGames.UI.MVC.Controllers
             return View(category);
         }
 
-        // GET: Categories/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+
+        #region AJAX CRUD Functionality
+
+        [AcceptVerbs("POST")]
+        public JsonResult AjaxDelete(int id)
         {
-            if (id == null || _context.Categories == null)
-            {
-                return NotFound();
-            }
 
-            var category = await _context.Categories
-                .FirstOrDefaultAsync(m => m.CategoryId == id);
-            if (category == null)
-            {
-                return NotFound();
-            }
+            Category category = _context.Categories.Find(id);
 
-            return View(category);
+            _context.Categories.Remove(category);
+
+            _context.SaveChanges();
+
+            string confirmMessage = $"Deleted the category, {category.CategoryName}, from the database!";
+
+            return Json(new { id = id, message = confirmMessage });
+
         }
 
-        // POST: Categories/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Categories == null)
-            {
-                return Problem("Entity set 'RetroGamesContext.Categories'  is null.");
-            }
-            var category = await _context.Categories.FindAsync(id);
-            if (category != null)
-            {
-                _context.Categories.Remove(category);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+        #endregion
+
+
+
+        #region Original (replaced) Scaffolded EF Actions
+
+
+
+        //// GET: Categories/Delete/5
+        //public async Task<IActionResult> Delete(int? id)
+        //{
+        //    if (id == null || _context.Categories == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var category = await _context.Categories
+        //        .FirstOrDefaultAsync(m => m.CategoryId == id);
+        //    if (category == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return View(category);
+        //}
+
+        //// POST: Categories/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmed(int id)
+        //{
+        //    if (_context.Categories == null)
+        //    {
+        //        return Problem("Entity set 'RetroGamesContext.Categories'  is null.");
+        //    }
+        //    var category = await _context.Categories.FindAsync(id);
+        //    if (category != null)
+        //    {
+        //        _context.Categories.Remove(category);
+        //    }
+
+        //    await _context.SaveChangesAsync();
+        //    return RedirectToAction(nameof(Index));
+        //}
+
+        #endregion
 
         private bool CategoryExists(int id)
         {
