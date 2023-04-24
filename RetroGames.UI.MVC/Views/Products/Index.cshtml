@@ -23,6 +23,9 @@
     </div>
 </section>
 
+
+
+
 <div>
     <p class="col-md-2 mt-3 ml-2">
         @if (User.IsInRole("Admin"))
@@ -57,18 +60,18 @@
         <div class="row border p-2">
             @foreach (var item in Model)
             {
-                <div class="col-md-3 d-flex">
-                    <div class="product ftco-animate">
+                <div class="col-md-4 col-lg-3 d-flex">
+                    <div class="product ftco-animate fadeInUp ftco-animated">
                         <div class="img d-flex align-items-center justify-content-center" style="background-image: url(../images/@item.ProductImage);">
                             <div class="desc">
                                 <p class="meta-prod d-flex">
                                     <a asp-action="AddToCart" asp-controller="ShoppingCart" asp-Route-id="@item.ProductId" class="d-flex flaticon align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-                                    <a href="#" class="d-flex flaticon align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
+                                    @*<a href="#" class="d-flex flaticon align-items-center justify-content-center"><span class="flaticon-heart"></span></a>*@
                                     <a asp-action="Details" asp-route-id="@item.ProductId" class="d-flex flaticon align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
                                 </p>
                             </div>
                         </div>
-                        <div class="text rounded-bottom bg-white text-center">
+                        <div class="text rounded-bottom text-center">
                             @*<span class="sale">Sale</span>*@
                             @if (item.ConsoleType != null)
                             {

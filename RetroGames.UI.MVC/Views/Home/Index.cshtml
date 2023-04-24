@@ -48,8 +48,10 @@
                         <span class="flaticon-free-delivery"></span>
                     </div>
                     <div class="text">
-                        <h2>Free Shipping &amp; Return</h2>
+                        <h2>Free Shipping &amp; Returns</h2>
                         <p>Free Shipping and handling on orders over $30!</p>
+                        <br />
+                        <p>We NEVER charge for returns!</p>
                     </div>
                 </div>
             </div>
@@ -107,13 +109,13 @@
 
                 @foreach (var item in Model)
                 {
-                    <div class="col-md-3 d-flex">
+                    <div class="col-md-4 col-lg-3 d-flex">
                         <div class="product ftco-animate">
                             <div class="img d-flex align-items-center justify-content-center" style="background-image: url(../images/@item.ProductImage);">
                                 <div class="desc">
                                     <p class="meta-prod d-flex">
                                         <a asp-action="AddToCart" asp-controller="ShoppingCart" asp-Route-id="@item.ProductId" class="d-flex flaticon align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-                                        <a href="#" class="d-flex flaticon align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
+                                        @*<a href="#" class="d-flex flaticon align-items-center justify-content-center"><span class="flaticon-heart"></span></a>*@
                                         <a asp-action="Details" asp-route-id="@item.ProductId" asp-controller="Products" class="d-flex flaticon align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
                                     </p>
                                 </div>
@@ -121,7 +123,7 @@
                             <div class="text text-center">
 
                                 <span class="category">@item.Category.CategoryName</span>
-                                <h2>@item.ProductName</h2>
+                                <h2 class="oldfont">@item.ProductName</h2>
                                 <p class="mb-0"> <span class="price">@string.Format($"{item.ProductPrice:c}")</span></p>
                             </div>
                         </div>
