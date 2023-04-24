@@ -2533,6 +2533,17 @@ input[type="button"].btn-block {
 .dropleft {
   position: relative; }
 
+.cart-drop{
+    color: black;
+}
+
+.cart-dropdown {
+    max-height: 50vh;
+    overflow: scroll;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
 .dropdown-toggle::after {
   display: inline-block;
   margin-left: 0.255em;
@@ -8202,7 +8213,7 @@ h1, h2, h3, h4, h5,
         font-size: 13px;
         font-weight: 500; }
       .ftco-navbar-light .btn-group .dropdown-menu .dropdown-item:hover {
-        background: transparent; }
+        background: #cbcdcf4f; }
   @media (max-width: 991.98px) {
     .ftco-navbar-light .navbar-nav {
       padding-bottom: 10px; } }
@@ -8610,12 +8621,12 @@ h1, h2, h3, h4, h5,
     color: black;
 }
 
-.cut-text {
+/*.cut-text {
     text-overflow: ellipsis;
     overflow: hidden;
     width: 200px;
     height: 1.2em;
-    white-space: nowrap;
+    white-space: nowrap;*/
 }
     .btn.btn-primary.btn-outline-primary {
       border: 1px solid #b7472a;
@@ -8753,9 +8764,9 @@ h1, h2, h3, h4, h5,
         color: #cccccc;
         text-decoration: line-through; }
   .product:hover {
-    -webkit-box-shadow: 0px 10px 27px -21px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0px 10px 27px -21px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 10px 27px -21px rgba(0, 0, 0, 0.2); }
+    -webkit-box-shadow: 0px 10px 27px -21px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0px 10px 27px -21px rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 10px 27px -21px rgba(0, 0, 0, 0.8); }
     .product:hover .img:after {
       opacity: .7; }
     .product:hover .img .desc {
@@ -8872,12 +8883,12 @@ h1, h2, h3, h4, h5,
     padding: 20px 30px !important;
     border-radius: 0;
     margin-bottom: 0;
-    color: #000000;
+    color: #fff;
     font-size: 22px;
     font-weight: 700;
     position: relative;
     border: 1px solid transparent;
-    background: rgba(0, 0, 0, 0.05);
+    background: #b7472a;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
@@ -10071,6 +10082,10 @@ textarea.form-control {
 
 ._wrapper input {
     background-color: white;
+}
+
+#account {
+    color: black;
 }
 
 #account a{

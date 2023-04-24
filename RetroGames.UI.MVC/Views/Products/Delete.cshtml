@@ -4,7 +4,7 @@
     ViewData["Title"] = "Delete " + Model.ProductName;
 }
 
-<section class="hero-wrap hero-wrap-2" style="background-image: url('../../wwwroot/images/retro_background-1.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2 navbackground" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
@@ -23,7 +23,7 @@
         This action <em>cannot</em> be undone.
     </p>
     <hr />
-    <dl class="row">
+    <dl class="row bg-light">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.ProductName)
         </dt>
@@ -95,6 +95,6 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="ProductId" />
         <input type="submit" value="Delete Forever" class="btn btn-danger d-inline-flex" />
-        <a asp-action="Index" class="btn btn-secondary d-inline-flex">Back to List</a>
+        <a asp-action="Index" class="btn secondarybutton d-inline-flex">Back to List</a>
     </form>
 </div>

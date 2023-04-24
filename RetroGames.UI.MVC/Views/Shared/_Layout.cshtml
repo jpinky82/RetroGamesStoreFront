@@ -2,7 +2,7 @@
 @inject SignInManager<IdentityUser> signInManager
 @using Microsoft.AspNetCore.Http
 @using Newtonsoft.Json
-@*@model Dictionary<int, RetroGames.UI.MVC.Models.CartItemViewModel>*@
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +28,7 @@
 
     <link rel="stylesheet" href="~/css/flaticon.css">
 
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />   
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
     <!--Paged Lists-->
     <link rel="stylesheet" href="~/css/PagedList.css">
 
@@ -46,13 +46,14 @@
                     </p>
                 </div>
                 <div class="col-md-6 d-flex justify-content-md-end">
-                    <p class="mb-0 topnav">@*<a href="#" class="mr-2">Sign Up</a> <a href="@Url.Action("ListUsers", "Administration")">Log In</a>*@
+                    <p class="mb-0 topnav">
+                        @*<a href="#" class="mr-2">Sign Up</a> <a href="@Url.Action("ListUsers", "Administration")">Log In</a>*@
                         <partial name="_LoginPartial" />
                     </p>
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -68,14 +69,14 @@
                 //Create a variable to store the number of products
                 int productCount = 0;
 
+                // Create the dictionary to hold the cart items
+                var products = new Dictionary<int, CartItemViewModel>();
+
                 //Check if the "cart" string exists in the session
                 if (!string.IsNullOrEmpty(Context.Session.GetString("cart")))
                 {
                     //If so, there are items in the cart -- flip the bool
                     cartHasProducts = true;
-
-                    //Create the dictionary to hold the cart items
-                    var products = new Dictionary<int, CartItemViewModel>();
 
                     //Deserialize the session cart and store it in the dictionary
                     products = JsonConvert.DeserializeObject<Dictionary<int, CartItemViewModel>>(Context.Session.GetString("cart"));
@@ -92,21 +93,35 @@
                         <div class="d-flex justify-content-center align-items-center"><small>@productCount</small></div>
                     }
                 </a>
-                <div class="dropdown-menu dropdown-menu-right">
-@*                @if (cartHasProducts)
-                {
-                    foreach (var item in Model)
+                <div class="cart-dropdown dropdown-menu dropdown-menu-right">
+                    @if (cartHasProducts)
+                    {
+                        foreach (var item in products)
                         {
-                            <div class="dropdown-item d-flex align-items-start" asp-action="Details" asp-route-id="@item.Key">
-                                <div> <img src="~/images/t_@item.Value.Product.ProductImage" alt="@item.Value.Product.ProductName" /></div>
-                                <div class="text pl-3">
-                                    <h4>@item.Value.Product.ProductName</h4>
-                                    <p class="mb-0"><a href="#" class="price">@item.Value.Product.ProductPrice</a><span class="quantity ml-3">Quantity: @item.Value.Qty</span></p>
+                            <div class="dropdown-item" asp-action="Details" asp-route-id="@item.Key">
+                                <div class="d-block">
+                                    <div class="d-flex align-items-center">
+                                        <div > 
+                                            <img src="~/images/t_@item.Value.Product.ProductImage" alt="@item.Value.Product.ProductName" />
+                                        </div>
+                                        <div class="text pl-3">
+                                            <h5>@item.Value.Product.ProductName</h5>
+                                            <p class="m-0 text-dark">Quantity: @item.Value.Qty</p>
+                                            <p class="m-0 text-dark">@Html.DisplayFor(modelItem => item.Value.Product.ProductPrice)</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <a asp-action="RemoveFromCart" asp-controller="ShoppingCart" asp-route-id="@item.Key" class="btn btn-outline-danger mt-3 d-flex justify-content-center">
+                                            Remove
+                                        </a>
+                                    </div>
+
                                 </div>
                             </div>
+
                         }
-                }*@
-                    
+                    }
+
                     <a class="dropdown-item text-center btn-link d-block w-100" href="@Url.Action("Index","ShoppingCart")">
                         View Cart
                         <span class="ion-ios-arrow-round-forward"></span>
@@ -142,7 +157,7 @@
                     }
 
                     <li class="nav-item"><a href="@Url.Action("Contact", "Home")" class="nav-link">Contact</a></li>
-                    
+
                 </ul>
             </div>
         </div>

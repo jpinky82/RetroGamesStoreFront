@@ -29,7 +29,7 @@ else
     <section class="ftco-section">
         <div class="container">
             <div class="row">
-                <div class="table-wrap">
+                <div class="table-wrap vw-100">
                     <table class="table">
                         <thead class="thead-primary">
                             <tr>
@@ -113,18 +113,18 @@ else
                 </div>
             </div>
             <div class="row justify-content-end">
-                <div class="col col-lg-5 col-md-6 mt-5 cart-wrap ftco-animate">
-                    <div class="cart-total mb-3">
+                <div class="col col-lg-5 col-md-6 mt-5 pr-0 cart-wrap ftco-animate">
+                    <div class="cart-total mb-3 bg-light">
                         <h3>Cart Totals</h3>
                         <p class="d-flex">
                             <span>Subtotal</span>
                             <span>@string.Format($"{cartTotal:c}")</span>
                         </p>
-                        <p class ="d-flex">
-                            <span>Delivery</span>
+                        <p class="d-inline-flex">
+                            <span m-0>Delivery</span>
                             @if (cartTotal >= 30)
                             {
-                            <p class="d-flex">Free Delivery!</p>
+                            <span class="d-flex">Free Delivery!</span>
                             }
                             else
                             {
@@ -151,7 +151,7 @@ else
                     else
                     { 
                         <p>
-                            To place this order, you must be <a asp-area="Identity" asp-page="/Account/Login">logged in.</a>
+                            To place this order, you must be <a asp-area="Identity" asp-page="/Account/Login" id="account">logged in.</a>
                         </p>
                        
                     }
@@ -162,124 +162,3 @@ else
     </section>
 
 }
-
-
-@*<tr class="alert" role="alert">
-	<td>
-		<label class="checkbox-wrap checkbox-primary">
-			<input type="checkbox">
-			<span class="checkmark"></span>
-		</label>
-	</td>
-	<td>
-		<div class="img" style="background-image: url(images/prod-2.jpg);"></div>
-	</td>
-	<td>
-		<div class="email">
-			<span>Jim Beam Kentucky Straight</span>
-			<span>Fugiat voluptates quasi nemo, ipsa perferendis</span>
-		</div>
-	</td>
-	<td>$30.99</td>
-	<td class="quantity">
-		<div class="input-group">
-			<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-		</div>
-	</td>
-	<td>$30.99</td>
-	<td>
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true"><i class="fa fa-close"></i></span>
-		</button>
-	</td>
-</tr>
-
-<tr class="alert" role="alert">
-	<td>
-		<label class="checkbox-wrap checkbox-primary">
-			<input type="checkbox">
-			<span class="checkmark"></span>
-		</label>
-	</td>
-	<td>
-		<div class="img" style="background-image: url(images/prod-3.jpg);"></div>
-	</td>
-	<td>
-		<div class="email">
-			<span>Jim Beam Kentucky Straight</span>
-			<span>Fugiat voluptates quasi nemo, ipsa perferendis</span>
-		</div>
-	</td>
-	<td>$35.50</td>
-	<td class="quantity">
-		<div class="input-group">
-			<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-		</div>
-	</td>
-	<td>$35.50</td>
-	<td>
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true"><i class="fa fa-close"></i></span>
-		</button>
-	</td>
-</tr>
-
-<tr class="alert" role="alert">
-	<td>
-		<label class="checkbox-wrap checkbox-primary">
-			<input type="checkbox">
-			<span class="checkmark"></span>
-		</label>
-	</td>
-	<td>
-		<div class="img" style="background-image: url(images/prod-4.jpg);"></div>
-	</td>
-	<td>
-		<div class="email">
-			<span>Jim Beam Kentucky Straight</span>
-			<span>Fugiat voluptates quasi nemo, ipsa perferendis</span>
-		</div>
-	</td>
-	<td>$76.99</td>
-	<td class="quantity">
-		<div class="input-group">
-			<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-		</div>
-	</td>
-	<td>$76.99</td>
-	<td>
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true"><i class="fa fa-close"></i></span>
-		</button>
-	</td>
-</tr>
-
-<tr class="alert" role="alert">
-	<td class="border-bottom-0">
-		<label class="checkbox-wrap checkbox-primary">
-			<input type="checkbox">
-			<span class="checkmark"></span>
-		</label>
-	</td>
-	<td class="border-bottom-0">
-		<div class="img" style="background-image: url(images/prod-5.jpg);"></div>
-	</td>
-	<td class="border-bottom-0">
-		<div class="email">
-			<span>Jim Beam Kentucky Straight</span>
-			<span>Fugiat voluptates quasi nemo, ipsa perferendis</span>
-		</div>
-	</td>
-	<td class="border-bottom-0">$40.00</td>
-	<td class="quantity border-bottom-0">
-		<div class="input-group">
-			<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-		</div>
-	</td>
-	<td class="border-bottom-0">$40.00</td>
-	<td class="border-bottom-0">
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true"><i class="fa fa-close"></i></span>
-		</button>
-	</td>
-</tr>*@

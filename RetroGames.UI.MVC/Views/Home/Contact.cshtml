@@ -25,10 +25,10 @@
 <section class="ftco-section">
 	<div class="container">
 		<div class="row justify-content-center">
-			<div class="col-md-12">
+			<div class="col-lg-12">
 				<div class="wrapper px-md-4">
-					<div class="row mb-5 bg-light pt-4 rounded-pill">
-						<div class="col-md-3">
+					<div class="row mb-5 bg-light px-5 pt-4 rounded">
+						<div class="col-lg-3">
 							<div class="dbox w-100 text-center">
 								<div class="icon d-flex align-items-center justify-content-center">
 									<span class="fa fa-map-marker"></span>
@@ -38,7 +38,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3">
+						<div class="col-lg-3">
 							<div class="dbox w-100 text-center">
 								<div class="icon d-flex align-items-center justify-content-center">
 									<span class="fa fa-phone"></span>
@@ -48,7 +48,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3">
+						<div class="col-lg-3">
 							<div class="dbox w-100 text-center">
 								<div class="icon d-flex align-items-center justify-content-center">
 									<span class="fa fa-paper-plane"></span>
@@ -60,7 +60,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3">
+						<div class="col-lg-3">
 							<div class="dbox w-100 text-center">
 								<div class="icon d-flex align-items-center justify-content-center">
 									<span class="fa fa-globe"></span>
@@ -72,41 +72,41 @@
 						</div>
 					</div>
 					<div class="row no-gutters">
-						<div class="col-md-7">
+						<div class="col-lg-7">
 							<div class="contact-wrap w-100 p-md-5 border">
 								<h3 class="mb-4">Contact Us</h3>
 								<form asp-action="Contact" id="contactForm" name="contactForm" class="contactForm">
 									<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 									<div class="row">
-										<div class="col-md-6">
+										<div class="col-lg-6">
 											<div class="form-group">
 												<label class="label">Full Name</label>
 												<input asp-for="Name" class="form-control" id="name" placeholder="Name" />
 												<span asp-validation-for="Name" class="text-danger"></span>
 											</div>
 										</div>
-										<div class="col-md-6">
+										<div class="col-lg-6">
 											<div class="form-group">
 												<label class="label">Email Address</label>
 												<input asp-for="Email" class="form-control" id="email" placeholder="Email" />
 												<span asp-validation-for="Email" class="text-danger"></span>
 											</div>
 										</div>
-										<div class="col-md-12">
+										<div class="col-lg-12">
 											<div class="form-group">
 												<label class="label">Subject</label>
 												<input asp-for="Subject" class="form-control" id="subject" placeholder="Subject" />
 												<span asp-validation-for="Subject" class="text-danger"></span>
 											</div>
 										</div>
-										<div class="col-md-12">
+										<div class="col-lg-12">
 											<div class="form-group">
 												<label class="label">Message</label>
 												<textarea asp-for="Message" class="form-control" id="message" cols="30" rows="4" placeholder="Message"></textarea>
 												<span asp-validation-for="Message" class="text-danger"></span>
 											</div>
 										</div>
-										<div class="col-md-12">
+										<div class="col-lg-12">
 											<div class="form-group">
 												<input type="submit" value="Send Message" class="btn button">
 											</div>
@@ -115,7 +115,7 @@
 								</form>
 							</div>
 						</div>
-						<div class="col-md-5 order-md-first d-flex align-items-stretch border">
+						<div class="col-lg-5 order-md-first d-flex align-items-stretch border">
 							<div id="map" class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3102.275067987905!2d-94.6099715246793!3d38.96338667171006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87c0e925e366ed0f%3A0x73aec4617abd2f03!2sCentriq!5e0!3m2!1sen!2sus!4v1682182093666!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 						</div>
 					</div>
