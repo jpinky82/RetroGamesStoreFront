@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetroGames.UI.MVC", "RetroGames.UI.MVC\RetroGames.UI.MVC.csproj", "{494FD7AD-BF0F-4633-A966-9F3AD28CDEAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetroGames.DATA.EF", "RetroGames.DATA.EF\RetroGames.DATA.EF.csproj", "{FB62F902-A8A6-4CDF-9E86-ABB9A480AA42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetroGames.DATA.EF", "RetroGames.DATA.EF\RetroGames.DATA.EF.csproj", "{FB62F902-A8A6-4CDF-9E86-ABB9A480AA42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
