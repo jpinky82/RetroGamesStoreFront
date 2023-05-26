@@ -48,7 +48,7 @@ namespace RetroGames.UI.MVC.Controllers
 
             var sessionCart = HttpContext.Session.GetString("cart");
 
-            if (string.IsNullOrEmpty(sessionCart))
+            if (String.IsNullOrEmpty(sessionCart))
             {
                 shoppingCart = new Dictionary<int, CartItemViewModel>();
             }
@@ -178,7 +178,7 @@ namespace RetroGames.UI.MVC.Controllers
 
                 //For linking table records, we can add items/records to an existing entity
                 //if the records are related.
-                o.OrderProducts.Add(op);
+                o.OrderProducts.Add(op);    
 
                 ////remove the item from the cart - alternative to the Session.Remove below
                 //shoppingCart.Remove(item.Key);
@@ -191,7 +191,7 @@ namespace RetroGames.UI.MVC.Controllers
             HttpContext.Session.Remove("cart");
 
             //Redirect the user to the Orders Index
-            return RedirectToAction("Index", "Orders");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
