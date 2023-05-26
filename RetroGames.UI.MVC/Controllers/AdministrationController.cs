@@ -29,6 +29,7 @@ namespace RetroGames.UI.MVC.Controllers//Update namespace
         #endregion
 
         #region Edit User
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> EditUser(string id)
         {
@@ -57,7 +58,7 @@ namespace RetroGames.UI.MVC.Controllers//Update namespace
 
             return View(model);
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> EditUser(EditUserViewModel model)
         {

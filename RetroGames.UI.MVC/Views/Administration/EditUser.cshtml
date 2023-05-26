@@ -20,7 +20,7 @@
     </div>
 </section>
 
-<form method="post" class="mt-3">
+<form method="post" class="mt-3 p-4">
     <div class="form-group row">
         <label asp-for="Id" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
@@ -74,11 +74,15 @@
                 <h5 class="card-title">None at the moment</h5>
             }
         </div>
-        <div class="card-footer">
-            <a href="@Url.Action("EditUserRoles","Administration", new {userId = Model.Id})" style="width:auto" class="btn button">
-                Manage Roles
-            </a>
-        </div>
+        @if (User.IsInRole("admin"))
+        {
+            <div class="card-footer">
+                <a href="@Url.Action("EditUserRoles","Administration", new {userId = Model.Id})" style="width:auto" class="btn button">
+                    Manage Roles
+                </a>
+            </div>
+        }
+        
     </div>
 
     <div class="card mt-3">
