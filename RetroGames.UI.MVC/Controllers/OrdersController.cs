@@ -22,7 +22,7 @@ namespace RetroGames.UI.MVC.Controllers
         }
 
         // GET: Orders
-        //[Authorize]
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var retroGamesContext = _context.Orders.Include(o => o.User);
@@ -30,7 +30,7 @@ namespace RetroGames.UI.MVC.Controllers
         }
 
         // GET: Orders/Details/5
-        //[Authorize]
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Orders == null)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 namespace RetroGames.DATA.EF.Models
 {
@@ -35,8 +36,17 @@ namespace RetroGames.DATA.EF.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
+                //installed Microsoft.Extensions.Configuration.Json in order to add the appsettings.json and pull in the DefaultConnection string.
+
+                var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+                var config = configuration.Build();
+                var connectionString = config.GetConnectionString("DefaultConnection");
+
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.\\sqlexpress;Database=RetroGames;Trusted_Connection=True;MultipleActiveResultSets=True;");
+                //optionsBuilder.UseSqlServer("Server=.\\sqlexpress;Database=RetroGames;Trusted_Connection=True;MultipleActiveResultSets=True;");
+                //optionsBuilder.UseSqlServer("Server=sql8001.site4now.net;Database=db_a961d3_retrogames;UID=db_a961d3_retrogames_admin;PWD=&jhEbB0tjOt$1Hk;MultipleActiveResultSets=True;");
+                optionsBuilder.UseSqlServer(connectionString);
+
             }
         }
 
