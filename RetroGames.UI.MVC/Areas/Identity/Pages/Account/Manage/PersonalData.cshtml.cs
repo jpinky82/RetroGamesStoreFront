@@ -29,7 +29,7 @@ namespace RetroGames.UI.MVC.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-
+            ViewData["userId"] = user.Id;
             return Page();
         }
     }
