@@ -139,13 +139,18 @@
                     <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="@Url.Action("About", "Home")" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="@Url.Action("Index","Products")" class="nav-link">Shop</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item"><a href="@Url.Action("Index","Orders")" class="nav-link">Orders</a></li>
+                    }
 
                     @if (User.IsInRole("Admin"))
                     {
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Admin</span> <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a asp-action="ListUsers" class="dropdown-item" asp-controller="Administration">Users</a></li>
+                                <li><a asp-action="ListUsers" class="dropdown-item" asp-controller="Administration">Admin Users</a></li>
+                                <li><a asp-action="Index" class="dropdown-item" asp-controller="Users">Users</a></li>
                                 <li><a asp-action="ListRoles" class="dropdown-item" asp-controller="Administration">Roles</a></li>
                                 <li><a asp-action="Index" class="dropdown-item" asp-controller="Categories">Categories</a></li>
                                 <li><a asp-action="Index" class="dropdown-item" asp-controller="ConsoleTypes">Console Types</a></li>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,7 @@ using RetroGames.DATA.EF.Models;
 
 namespace RetroGames.UI.MVC.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class OrdersController : Controller
     {
         private readonly RetroGamesContext _context;
@@ -25,8 +26,17 @@ namespace RetroGames.UI.MVC.Controllers
         [Authorize]
         public async Task<IActionResult> Index()
         {
-            var retroGamesContext = _context.Orders.Include(o => o.User);
-            return View(await retroGamesContext.ToListAsync());
+            if (!User.IsInRole("Admin"))
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                var retroGamesContext = _context.Orders.Include(o => o.User).Where(o => o.UserId == userId);
+                return View(await retroGamesContext.ToListAsync());
+            }
+
+            var adminRetroGamesContext = _context.Orders.Include(o => o.User);
+            return View(await adminRetroGamesContext.ToListAsync());
+
         }
 
         // GET: Orders/Details/5
@@ -39,17 +49,19 @@ namespace RetroGames.UI.MVC.Controllers
             }
 
             var order = await _context.Orders
-                .Include(o => o.User)
+                .Include(o => o.User).Include(op => op.OrderProducts)
                 .FirstOrDefaultAsync(m => m.OrderId == id);
             if (order == null)
             {
                 return NotFound();
             }
 
+            ViewBag.FullName = $"{order.User.FirstName} {order.User.LastName}";
             return View(order);
         }
 
         // GET: Orders/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId");
@@ -59,6 +71,7 @@ namespace RetroGames.UI.MVC.Controllers
         // POST: Orders/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("OrderId,UserId,OrderDate,ShipToName,ShipCity,ShipState,ShipZip")] Order order)
@@ -74,6 +87,7 @@ namespace RetroGames.UI.MVC.Controllers
         }
 
         // GET: Orders/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Orders == null)
@@ -93,6 +107,7 @@ namespace RetroGames.UI.MVC.Controllers
         // POST: Orders/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("OrderId,UserId,OrderDate,ShipToName,ShipCity,ShipState,ShipZip")] Order order)
@@ -127,6 +142,7 @@ namespace RetroGames.UI.MVC.Controllers
         }
 
         // GET: Orders/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Orders == null)
@@ -146,6 +162,7 @@ namespace RetroGames.UI.MVC.Controllers
         }
 
         // POST: Orders/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

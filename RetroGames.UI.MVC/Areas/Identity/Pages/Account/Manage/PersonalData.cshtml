@@ -9,12 +9,16 @@
 
 <div class="row">
     <div class="col-md-6">
+        <div class="bg-light my-3 py-2 text-center">
+            <p class="font-weight-bold text-dark">Click on the button below to modify your personal info.</p>
+            <a asp-controller="Users" asp-action="Edit" asp-route-id="@ViewData["userId"]" class="btn button px-4">Edit</a>
+        </div>
         <p>Your account contains personal data that you have given us. This page allows you to download or delete that data.</p>
         <p>
             <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
         </p>
         <form id="download-data" asp-page="DownloadPersonalData" method="post">
-            <button class="btn button" type="submit">Download</button>
+            <button class="btn button mb-3" type="submit">Download</button>
         </form>
         <p>
             <a id="delete" asp-page="DeletePersonalData" class="btn btn-danger">Delete</a>

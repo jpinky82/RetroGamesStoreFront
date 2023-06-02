@@ -11,7 +11,7 @@ using RetroGames.DATA.EF.Models;
 
 namespace RetroGames.UI.MVC.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class UsersController : Controller
     {
         private readonly RetroGamesContext _context;
@@ -25,9 +25,13 @@ namespace RetroGames.UI.MVC.Controllers
         [Authorize]
         public async Task<IActionResult> Index()
         {
-              return _context.Users != null ? 
-                          View(await _context.Users.ToListAsync()) :
-                          Problem("Entity set 'RetroGamesContext.Users'  is null.");
+            if (!User.IsInRole("Admin"))
+            {
+                return Redirect("~/Home/Index");
+            }
+            return _context.Users != null ?
+                        View(await _context.Users.ToListAsync()) :
+                        Problem("Entity set 'RetroGamesContext.Users'  is null.");
         }
 
         // GET: Users/Details/5
@@ -50,6 +54,7 @@ namespace RetroGames.UI.MVC.Controllers
         }
 
         // GET: Users/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -58,6 +63,7 @@ namespace RetroGames.UI.MVC.Controllers
         // POST: Users/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("UserId,FirstName,LastName,Address,City,State,Zip,Phone")] User user)
@@ -72,6 +78,7 @@ namespace RetroGames.UI.MVC.Controllers
         }
 
         // GET: Users/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.Users == null)
@@ -92,6 +99,7 @@ namespace RetroGames.UI.MVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(string id, [Bind("UserId,FirstName,LastName,Address,City,State,Zip,Phone")] User user)
         {
             if (id != user.UserId)
@@ -123,6 +131,7 @@ namespace RetroGames.UI.MVC.Controllers
         }
 
         // GET: Users/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null || _context.Users == null)
@@ -141,6 +150,7 @@ namespace RetroGames.UI.MVC.Controllers
         }
 
         // POST: Users/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
@@ -159,6 +169,7 @@ namespace RetroGames.UI.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize]
         private bool UserExists(string id)
         {
           return (_context.Users?.Any(e => e.UserId == id)).GetValueOrDefault();

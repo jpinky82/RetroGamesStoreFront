@@ -27,7 +27,8 @@
             @Html.DisplayFor(model => model.OrderDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ShipToName)
+            @*@Html.DisplayNameFor(model => model.ShipToName)*@
+            Ship To
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ShipToName)
@@ -54,11 +55,16 @@
             @Html.DisplayNameFor(model => model.User)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.User.UserId)
+            @*@Html.DisplayFor(model => model.User.FirstName)*@
+            @ViewBag.FullName
         </dd>
     </dl>
 </div>
 <div class="mb-3">
-    <a asp-action="Edit" asp-route-id="@Model?.OrderId" class="btn button">Edit</a> |
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model?.OrderId" class="btn button">Edit</a><span>|</span>
+    }
+    
     <a asp-action="Index" class="btn secondarybutton">Back to List</a>
 </div>
