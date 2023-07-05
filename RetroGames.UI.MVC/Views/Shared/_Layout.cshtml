@@ -186,14 +186,26 @@
                 </div>
                 <div class="col-sm-12 col-md">
                     <div class="ftco-footer-widget mb-4 ml-md-4">
-                        <h2 class="ftco-heading-2">My Accounts</h2>
+                        <h2 class="ftco-heading-2">My Account</h2>
                         <ul class="list-unstyled">
-                            <li><a asp-area="Identity" asp-page="/Account/Register"><span class="fa fa-chevron-right mr-2"></span>Register</a>
-                            <li>
-                            <li><a asp-area="Identity" asp-page="/Account/Login"><span class="fa fa-chevron-right mr-2"></span>Login</a></li>
-                            <li><a asp-area="Identity" asp-page="/Account/Manage/Index"><span class="fa fa-chevron-right mr-2"></span>Account</a>
-                            <li>
-                            <li><a href="@Url.Action("Index", "Orders")"><span class="fa fa-chevron-right mr-2"></span>Orders</a></li>
+                            @if (!User.Identity.IsAuthenticated)
+                            {
+                                <li>
+                                    <a asp-area="Identity" asp-page="/Account/Register"><span class="fa fa-chevron-right mr-2"></span>Register</a>
+                                </li>
+                                <li><a asp-area="Identity" asp-page="/Account/Login"><span class="fa fa-chevron-right mr-2"></span>Login</a></li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a asp-area="Identity" asp-page="/Account/Manage/Index"><span class="fa fa-chevron-right mr-2"></span>Account</a>
+                                </li>
+                                <li><a href="@Url.Action("Index", "Orders")"><span class="fa fa-chevron-right mr-2"></span>Orders</a></li>
+                            }
+
+                            
+                            
+                            
                         </ul>
                     </div>
                 </div>
