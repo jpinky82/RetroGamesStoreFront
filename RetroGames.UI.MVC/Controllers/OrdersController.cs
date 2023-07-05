@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RetroGames.DATA.EF.Models;
+using RetroGames.UI.MVC.Models;
 
 namespace RetroGames.UI.MVC.Controllers
 {
@@ -49,14 +51,20 @@ namespace RetroGames.UI.MVC.Controllers
             }
 
             var order = await _context.Orders
-                .Include(o => o.User).Include(op => op.OrderProducts)
+                .Include(o => o.User).Include(op => op.OrderProducts).ThenInclude(p => p.Product)
                 .FirstOrDefaultAsync(m => m.OrderId == id);
             if (order == null)
             {
                 return NotFound();
             }
 
-            ViewBag.FullName = $"{order.User.FirstName} {order.User.LastName}";
+            // Retrieve the success message from TempData (if available)
+            string successMessage = TempData["SuccessMessage"] as string;
+
+            // Pass the order details and success message to the view
+            ViewData["Order"] = order;
+            ViewData["SuccessMessage"] = successMessage;
+
             return View(order);
         }
 

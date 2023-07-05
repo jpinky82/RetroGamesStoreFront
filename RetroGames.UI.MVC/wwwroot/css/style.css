@@ -8029,6 +8029,10 @@ body {
     height: 100%;
     width: 100%; }
 
+  #details{
+      color: black !important;
+  }
+
 a {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;

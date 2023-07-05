@@ -190,8 +190,11 @@ namespace RetroGames.UI.MVC.Controllers
             //Removing the cart string from the session
             HttpContext.Session.Remove("cart");
 
+            TempData["SuccessMessage"] = "Order created successfully.";
+
             //Redirect the user to the Orders Index
-            return RedirectToAction("Index", "Home");
+            //return RedirectToAction("Index", "Home");
+            return RedirectToAction("Details", "Orders", new { id = o.OrderId });
         }
     }
 }

@@ -47,26 +47,14 @@ namespace RetroGames.UI.MVC.Controllers
             return View(category);
         }
 
-        // GET: Categories/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Categories/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CategoryId,CategoryName,CategoryDescription")] Category category)
+        public JsonResult AjaxCreate(Category category)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(category);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(category);
+            _context.Categories.Add(category);
+            _context.SaveChanges();
+
+            return Json(category);
         }
 
         // GET: Categories/Edit/5
@@ -145,7 +133,27 @@ namespace RetroGames.UI.MVC.Controllers
 
         #region Original (replaced) Scaffolded EF Actions
 
+        //// GET: Categories/Create
+        //public IActionResult Create()
+        //{
+        //    return View();
+        //}
 
+        //// POST: Categories/Create
+        //// To protect from overposting attacks, enable the specific properties you want to bind to.
+        //// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Create([Bind("CategoryId,CategoryName,CategoryDescription")] Category category)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.Add(category);
+        //        await _context.SaveChangesAsync();
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    return View(category);
+        //}
 
         //// GET: Categories/Delete/5
         //public async Task<IActionResult> Delete(int? id)
