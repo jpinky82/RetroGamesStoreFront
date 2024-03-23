@@ -125,7 +125,7 @@ namespace RetroGames.UI.MVC.Controllers
 
 				try
 				{
-					client.Connect(_config.GetValue<string>("Credentials:Email:Client"));
+					client.Connect(_config.GetValue<string>("Credentials:Email:Client"), Convert.ToInt32(_config.GetValue<string>("Credentials:Email:Port")), MailKit.Security.SecureSocketOptions.SslOnConnect);
 					//log in to the mail server using the credentials for our email user
 					client.Authenticate(
 					//username
